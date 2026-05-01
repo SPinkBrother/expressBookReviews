@@ -153,7 +153,7 @@ public_users.get('/review/:isbn', function (req, res) {
   if (!book.reviews) {
     return res.status(404).json({ message: "Reviews not found for this book." });
   }
-  return res.status(200).json({ reviews: book.reviews });
+  return res.status(200).json(book.reviews);
 });
 
 module.exports.general = public_users;
