@@ -1,0 +1,7 @@
+# cURL command to get book reviews by ISBN
+curl -v http://localhost:5000/review/1
+
+# Output:
+# StatusCode        : 200
+# StatusDescription : OK
+# Content           : "Takobeo"

@@ -8,6 +8,18 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  req.session = req.session || {};
+  req.session.authorization = {
+    accessToken: require('jsonwebtoken').sign(
+      { userName: "testuser" },
+      "access"
+    )
+  };
+  next();
+});
+
+
 app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}))
 
 app.use("/customer/auth/*", function auth(req,res,next){
